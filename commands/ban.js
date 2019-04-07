@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-
+const config = require("../config.json")
 module.exports.run = async (bot, message, args) => {
     let bannedUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0])
         );
@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
         }
 
 
-        let banEmbed = new Discord.RichEmbed()
+        let LOG_banEmbed = new Discord.RichEmbed()
         .setDescription('Ban')
         .setColor ('ff0000')
         .addField('Utilisateur ban', `${bannedUser} ID : ${bannedUser.id}`)
@@ -26,13 +26,10 @@ module.exports.run = async (bot, message, args) => {
         .setTimestamp();
         console.log(`[!] Ban effectué par${message.author.username}!`);
 
-    let logsChannel = message.guild.channels.find(`name`, "logs");
-    if (!logsChannel) {
-        message.guild.createChannel(c => c.name === "logs");
-    }
+    let logsChannel = bot.channels.get(config.logChannel)
     
     message.guild.member(bannedUser).ban(banReason);
-    logsChannel.send(banEmbed);
+    logsChannel.send(LOG_banEmbed);
 };
 
 module.exports.help = {

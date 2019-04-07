@@ -58,12 +58,12 @@ module.exports = async (bot, message) => {
             logsChannel.send(commandEmbed);
             let yepEmbed = new Discord.RichEmbed()
             .setColor("#00bf00")
-            .setTitle(`**${yes} Votre commande a bien été envoyé ${message.author.username}!**`)
+            .setTitle(`**📨 ${yes} Votre commande a bien été envoyé ${message.author.username} !**`)
             .setFooter("AlvyBot | Commande envoyée")
             .setTimestamp();
             message.channel.send(yepEmbed)
             
-            message.author.send("**Le suivi de votre commande s'affichera ici.**\n*Merci de patienter, la Team Alvyre répondra dès qu'elle sera disponible.*")
+            message.author.send("**__Demande de map__**\n\n**- Le suivi de votre commande s'affichera ici !**\n*Merci de patienter, la Team Alvyre répondra dès qu'elle sera disponible.*")
             
             let staffChannel = bot.channels.get("551728938829742112")
             let staffEmbed = new Discord.RichEmbed()
@@ -144,11 +144,11 @@ if (message.channel.id === "551725359196798986") {
         logsChannel.send(CVEmbed);
         let yepEmbed = new Discord.RichEmbed()
         .setColor("#00bf00")
-        .setTitle(`**${yes} Votre CV a bien été envoyé ${message.author.username}!**`)
+        .setTitle(`**📨 ${yes} Votre CV a bien été envoyé ${message.author.username} !**`)
         .setFooter("AlvyBot | CV envoyé")
         .setTimestamp();
         message.channel.send(yepEmbed)
-        message.author.send("**Le suivi de votre CV s'affichera ici.**\n*Merci de patienter, la Team Alvyre répondra dès qu'elle sera disponible.*")
+        message.author.send("**__Recrutement__**\n\n**Le suivi de votre CV s'affichera ici.**\n*Merci de patienter, la Team Alvyre répondra dès qu'elle sera disponible.*")
         
         let staffChannel = bot.channels.get("551728938829742112")
         let staffEmbed = new Discord.RichEmbed()
