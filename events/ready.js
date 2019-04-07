@@ -13,15 +13,15 @@ console.log(`
     
     function game1() {
         bot.user.setActivity(`oh yeaaaaah`, { type: "Listening" });
-        setTimeout(game2, 2000)//Écoute oh yeaaaaah
+        setTimeout(game2, 5000)//Écoute oh yeaaaaah
     }
     
     function game2() {
         bot.user.setActivity(`la Team Alvyre`, { type: "Watching" });
-        setTimeout(game3, 2000)//Joue à [&help]
+        setTimeout(game3, 5000)//Joue à [&help]
     }
     function game3() {
         bot.user.setActivity(`@PαιηOcнσcσ#3570`, { type: "Watching" });
-         setTimeout(game1, 2000);//Regarde @PαιηOcнσcσ#3570
+         setTimeout(game1, 5000);//Regarde @PαιηOcнσcσ#3570
     }
 }

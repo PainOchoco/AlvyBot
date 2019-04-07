@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
 
 module.exports.help = {
     name: "qrcode",
-    aliases: ["qrc"],
+    aliases: ["qrc","qr"],
     dsc: "Génere un QR Code.",
     stx: "qrcode <URL>"
 };
