@@ -26,10 +26,9 @@ module.exports.run = async (bot, message, args) => {
         .setTimestamp();
         console.log(`[!] Ban effectué par${message.author.username}!`);
 
-    let logsChannel = bot.channels.get(config.logChannel)
-    
+        let log = bot.channels.get(config.logChannel)
+        log.send(LOG_banEmbed)
     message.guild.member(bannedUser).ban(banReason);
-    logsChannel.send(LOG_banEmbed);
 };
 
 module.exports.help = {

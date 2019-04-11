@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
         return message.channel.send("L'utilisateur n'existe pas !");
         }
         let reportedReason = args.join(" ");
-        let reportEmbed = new Discord.RichEmbed()
+        let LOG_reportEmbed = new Discord.RichEmbed()
         .setDescription('Reports')
         .setColor ('ff0000')
         .addField('👤 | Utilisateur reporté', `${reportedUser} ID : ${reportedUser.id}`)
@@ -19,11 +19,8 @@ module.exports.run = async (bot, message, args) => {
         .setFooter(`AlvyBot | Report`);
         console.log(`[!] Report effectué par ${message.author.username} !`);
 
-    let reportChannel = message.guild.channels.find(`name`, 'logs');
-    if (!reportChannel) {
-    return message.channel.send('Salon `logs` introuvable, veuillez le créer')
-       }
-    reportChannel.send(reportEmbed);
+        let log = bot.channels.get(config.logChannel)
+        log.send(LOG_reportEmbed)
 };
 
 module.exports.help = {

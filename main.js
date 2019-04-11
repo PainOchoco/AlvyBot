@@ -30,9 +30,9 @@ fs.readdir("./commands/", (err, files) => {
      if(err) console.log(err);
       let jsfile = files.filter(f => f.split(".").pop() === "js")
       if(jsfile.length <= 0) return console.log("[!!!] Commandes introuvables");
+      console.log(`✅ ${jsfile.length} commandes ont été chargés !`)
       jsfile.forEach((f) => {
         let pull = require(`./commands/${f}`);
-        console.log(`✅ Chargement de la commande ${pull.help.name}`)
         bot.commands.set(pull.help.name, pull);
         pull.help.aliases.forEach(alias => {
             bot.aliases.set(alias, pull.help.name);

@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
         }
 
 
-        let kickEmbed = new Discord.RichEmbed()
+        let LOG_kickEmbed = new Discord.RichEmbed()
         .setDescription('Kick')
         .setColor ('ff7f00')
         .addField('👤 Utilisateur kick', `${kickedUser} ID : ${kickedUser.id}`)
@@ -26,13 +26,9 @@ module.exports.run = async (bot, message, args) => {
         .setTimestamp();
         console.log(`[!] Kick effectué par ${message.author.username}!`);
 
-    let logsChannel = message.guild.channels.find(`name`, "logs");
-    if (!logsChannel) {
-        message.guild.createChannel(c => c.name === "logs");
-    }
-    
+        let log = bot.channels.get(config.logChannel)
+        log.send(LOG_kickEmbed)
     message.guild.member(kickedUser).kick(kickReason);
-    logsChannel.send(kickEmbed);
 };
 
 module.exports.help = {

@@ -47,7 +47,8 @@ module.exports = async (bot, message) => {
             
             // Commande acceptée | YES
     		if (reaction.emoji.name === yes.name) {
-    			let logsChannel = bot.channels.get('531881225829351425')
+                let log = bot.channels.get(config.logChannel)
+                
                 let commandEmbed = new Discord.RichEmbed()
                 .setAuthor(`Commande de ${message.author.tag}`, `${message.author.avatarURL}`)
                 .setColor("#ff8f20")
@@ -55,17 +56,19 @@ module.exports = async (bot, message) => {
                 .setDescription(commande)
                 .setFooter("AlvyBot | Commande - Logs")
              
-            logsChannel.send(commandEmbed);
-            let yepEmbed = new Discord.RichEmbed()
-            .setColor("#00bf00")
-            .setTitle(`**📨 ${yes} Votre commande a bien été envoyé ${message.author.username} !**`)
-            .setFooter("AlvyBot | Commande envoyée")
-            .setTimestamp();
+            log.send(commandEmbed);
+
+                let yepEmbed = new Discord.RichEmbed()
+                .setColor("#00bf00")
+                .setTitle(`**📨 ${yes} Votre commande a bien été envoyé ${message.author.username} !**`)
+                .setFooter("AlvyBot | Commande envoyée")
+                .setTimestamp();
+            
             message.channel.send(yepEmbed)
             
             message.author.send("**__Demande de map__**\n\n**- Le suivi de votre commande s'affichera ici !**\n*Merci de patienter, la Team Alvyre répondra dès qu'elle sera disponible.*")
             
-            let staffChannel = bot.channels.get("551728938829742112")
+            let staffChannel = bot.channels.get(config.staffChannel)
             let staffEmbed = new Discord.RichEmbed()
             .setColor("#ff7f00")
             .setAuthor(`Commande de ${message.author.tag}`, `${message.author.avatarURL}`)
@@ -75,8 +78,8 @@ module.exports = async (bot, message) => {
             .setTimestamp();
     
             staffChannel.send(staffEmbed).then(async msgStaff => {
-                msgStaff.react(yes).then(r => {
-                msgStaff.react(no)
+                msgStaff.react(yes),
+                msgStaff.react(no),
                 msgStaff.react('👁')
                 })
                 //FILTRE 2
@@ -100,7 +103,7 @@ module.exports = async (bot, message) => {
                 }
             })
         });
-    })
+    
     
     
             // Commande refusée | NO
@@ -128,11 +131,11 @@ if (message.channel.id === "551725359196798986") {
     // FILTRE ✅ | ❌
     const filter = (reaction, user) => user.id === message.author.id;
     const collected = await message.awaitReactions(filter, { max: 1, time: 600000, errors: ['time'] })
-    const reaction = collected.first();
         
         // CV acceptée | YES
         if (reaction.emoji.name === yes.name) {
-            let logsChannel = bot.channels.get('531881225829351425')
+            let log = bot.channels.get(config.logChannel)
+
             let CVEmbed = new Discord.RichEmbed()
             .setAuthor(`CV de ${message.author.tag}`, `${message.author.avatarURL}`)
             .setColor("#ff8f20")
@@ -141,16 +144,19 @@ if (message.channel.id === "551725359196798986") {
             .setFooter("AlvyBot | CV - Logs")
             .setTimestamp();
          
-        logsChannel.send(CVEmbed);
-        let yepEmbed = new Discord.RichEmbed()
-        .setColor("#00bf00")
-        .setTitle(`**📨 ${yes} Votre CV a bien été envoyé ${message.author.username} !**`)
-        .setFooter("AlvyBot | CV envoyé")
-        .setTimestamp();
+        log.send(CVEmbed);
+
+            let yepEmbed = new Discord.RichEmbed()
+            .setColor("#00bf00")
+            .setTitle(`**📨 ${yes} Votre CV a bien été envoyé ${message.author.username} !**`)
+            .setFooter("AlvyBot | CV envoyé")
+            .setTimestamp();
+        
         message.channel.send(yepEmbed)
+        
         message.author.send("**__Recrutement__**\n\n**Le suivi de votre CV s'affichera ici.**\n*Merci de patienter, la Team Alvyre répondra dès qu'elle sera disponible.*")
         
-        let staffChannel = bot.channels.get("551728938829742112")
+        let staffChannel = bot.channels.get(config.staffChannel)
         let staffEmbed = new Discord.RichEmbed()
         .setColor("#ff7f00")
         .setAuthor(`Commande de ${message.author.tag}`, `${message.author.avatarURL}`)
@@ -159,8 +165,8 @@ if (message.channel.id === "551725359196798986") {
         .setFooter("AlvyBot | CV - En attente")
 
         staffChannel.send(staffEmbed).then(msgStaff => {
-            msgStaff.react(yes).then(r => {
-            msgStaff.react(no)
+            msgStaff.react(yes),
+            msgStaff.react(no),
             msgStaff.react('👁')
             })
             //FILTRE 2
@@ -184,9 +190,7 @@ if (message.channel.id === "551725359196798986") {
             }
         })
     });
-})
-
-
+}
         // CV refusée | NO
         } else if (reaction.emoji.name === no.name) {
         let nopEmbed = new Discord.RichEmbed()
@@ -195,6 +199,5 @@ if (message.channel.id === "551725359196798986") {
         .setFooter("AlvyBot | CV annulé")
         .setTimestamp();
         message.channel.send(nopEmbed)
-        }
-    };
+    }
 };

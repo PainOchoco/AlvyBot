@@ -1,9 +1,11 @@
 const Discord = require('discord.js');
 const Canvas = require ("canvas")
 const snekfetch = require ("snekfetch")
+const config = require("../config.json")
+
 module.exports = async (bot, member) => {
 
-const wChannel = bot.channels.get("546012680201175108")//a changer
+const wChannel = bot.channels.get(config.wgChannel)//a changer
     const applyText = (canvas, text) => {
         const ctx = canvas.getContext('2d');
         let fontSize = 70;
@@ -45,13 +47,13 @@ const wChannel = bot.channels.get("546012680201175108")//a changer
         wChannel.send(attachment);
         console.log(`[!] ${member}`, " a rejoint " + `${member.guild.name}`)
 
-let wEmbed = new Discord.RichEmbed()
+let LOG_wEmbed = new Discord.RichEmbed()
 
     .setAuthor(`${member.displayName},${member.id}`)
     .setColor("#00bf00")
 	.setDescription(`\`${member.displayName}\` est arrivé sur \`${member.guild.name}\`.\nIl y a \`${member.guild.memberCount}\` personnes sur \`${member.guild.name}\``)
 	.setTimestamp();
 
-    let logsChannel = bot.channels.get("531881225829351425")//a changer
-    logsChannel.send(wEmbed);
+    let log = bot.channels.get(config.logChannel)
+        log.send(LOG_wEmbed)
 }
