@@ -44,14 +44,15 @@ const wChannel = bot.channels.get(config.wgChannel)//a changer
 
 	const attachment = new Discord.Attachment(canvas.toBuffer(), 'welcome-image.png');
     
-        wChannel.send(attachment);
+		wChannel.send(attachment);
+		member.send("test")
         console.log(`[!] ${member}`, " a rejoint " + `${member.guild.name}`)
 
 let LOG_wEmbed = new Discord.RichEmbed()
 
-    .setAuthor(`${member.displayName},${member.id}`)
+    .setAuthor(`${member.displayName} | \`${member.id}\``)
     .setColor("#00bf00")
-	.setDescription(`\`${member.displayName}\` est arrivé sur \`${member.guild.name}\`.\nIl y a \`${member.guild.memberCount}\` personnes sur \`${member.guild.name}\``)
+	.setDescription(`\`${member.displayName}\` est arrivé sur \`${member.guild.name}\`.\n\`${member.guild.memberCount}\` personnes sur \`${member.guild.name}\``)
 	.setTimestamp();
 
     let log = bot.channels.get(config.logChannel)

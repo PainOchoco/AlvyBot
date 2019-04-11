@@ -4,8 +4,8 @@ const config = require("../config.json")
 module.exports = async (bot, message, member) => {
 const gChannel = bot.channels.get(config.wgChannel)//a changer
     
-        gChannel.send(`**👋 À bientôt ** ***${member}*** sur **${member.guild.name}** ! `);
-        console.log(`[!] ${member}`, " a quitté " + `${member.guild.name}`)
+        gChannel.send(`**👋 À bientôt <@${member.id}>** !`);
+        console.log(`[!] ${member.displayName}`, " a quitté " + `${member.guild.name}`)
         
 let LOG_gEmbed = new Discord.RichEmbed()
 

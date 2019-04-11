@@ -9,10 +9,11 @@ if (!args.join(" ")) {
        .setTitle ('Page d\'aide de **AlvyBot**')
        .setColor ('#9f0000')
        .setThumbnail(botIcon)
-       .addField('⚙ | **Administration** (6)', '`kick`,`ban`,`mute`,`clear`,`report`,`destroy`.')
-       .addField('🛠 | **Utiles** (12)', '`ping`,`help`,`serverinfo`,`info`,`setprefix`,`say`,`math`,`poll`,`weather`,`timer`,`embed`,`links`.')
-       .addField('😃 | **Fun** (7)', '`dog`,`cat`,`god`,`ascii`,`dice`,`flip`,`ask`.')
-       .setFooter(`AlvyBot | Help`);
+       .addField('⚙ | **Administration** (7)', '`kick`,`ban`,`mute`,`clear`,`report`,`destroy`,`reload`,`testLog`.')
+       .addField('🛠 | **Utiles** (13)', '`ping`,`help`,`serverinfo`,`info`,`myinfo`,`setprefix`,`say`,`math`,`poll`,`weather`,`timer`,`embed`,`links`.')
+       .addField('😃 | **Fun** (7)', '`dog`,`cat`,`ascii`,`dice`,`flip`,`ask`,`qrcode`.')
+       .setFooter(`AlvyBot | Help`)
+       .setTimestamp();
        
        message.channel.send(helpEmbed);
        return console.log(`[!] Page d\'aide envoyée par ${message.author.username}!`);
