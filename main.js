@@ -12,7 +12,7 @@
 
 // By PαιηOcнσcσ#3570 | 348165644623020032 all Right Reserved © MIT Licence 2019
 // For Team Alvyre ©, Minecraft Build Team, Discord Server.
-
+// 
 //          <- Consts ->
 const config = require('./config.json');
 const Discord = require('discord.js');
