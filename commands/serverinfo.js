@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
     .addField('📍 | Location', message.guild.region)
     .addField(`👥 | Nombre de membres`, message.guild.memberCount)
     .addField(`📝 | Nombre de salons`, `${message.guild.channels.filter(channel => channel.type === 'voice').size} 🔊 | ${message.guild.channels.filter(channel => channel.type === 'text').size} 💬`)
-    .addField(`📅 | Crée le`, message.guild.createdAt)
+    .addField(`📅 | Crée le`, message.guild.createdAt.format('dddd, MMMM Do YYYY, HH:mm:ss'))
     .addField(`🏷 | Roles (${message.guild.roles.size})`, message.guild.roles.map(role => role).join(' '))
     .addField(`😃 | Emojis (${message.guild.emojis.size})`, message.guild.emojis.map(emoji => emoji).join(''))
     .setFooter('AlvyBot | Page d\'information du serveur')
