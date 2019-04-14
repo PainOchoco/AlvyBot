@@ -78,8 +78,8 @@ module.exports = async (bot, message) => {
             .setTimestamp();
     
             staffChannel.send(staffEmbed).then(async msgStaff => {
-                msgStaff.react(yes),
-                msgStaff.react(no),
+                msgStaff.react(yes).then(r => {
+                msgStaff.react(no)
                 msgStaff.react('👁')
                 })
                 //FILTRE 2
@@ -103,6 +103,7 @@ module.exports = async (bot, message) => {
                 }
             })
         });
+    })
     
     
     
