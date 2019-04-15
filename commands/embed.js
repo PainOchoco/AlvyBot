@@ -4,9 +4,9 @@ module.exports.run = async (bot, message, args) => {
     const text = args.join(" ").slice(7);
 
     if (text === "") return message.channel.send("Mets un texte !");
-    if (color.length < 7) {
+    if (color.length < 7 || !color.content.includes("#")) {
       return message.channel.send(
-        "Un code héxadécimal contient 6 caractères ainsi qu'un # (ex: #ff000: rouge)."
+        "Un code héxadécimal contient 6 caractères ainsi qu'un # (ex: #ff0000: rouge)."
       );
     }
     
